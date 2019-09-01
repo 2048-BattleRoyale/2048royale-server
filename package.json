@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/2048-BattleRoyale/2048royale.git"
+    "url": "git+https://github.com/2048-BattleRoyale/2048royale-server.git"
   },
   "author": "Neil Balch, etc.",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/2048-BattleRoyale/2048royale/issues"
+    "url": "https://github.com/2048-BattleRoyale/2048royale-server/issues"
   },
-  "homepage": "https://github.com/2048-BattleRoyale/2048royale#readme",
+  "homepage": "https://github.com/2048-BattleRoyale/2048royale-server#readme",
   "dependencies": {
     "nodemon": "^1.19.1",
     "ws": "^7.1.0"
