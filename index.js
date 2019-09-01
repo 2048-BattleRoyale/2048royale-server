@@ -2,7 +2,6 @@ const websockets = require('ws');
 const Board = require("./board.js");
 
 const printDebugLevelMsgs = true;
-const httpPort = 7000;
 const wsPort = process.env.PORT || 8000;
 const oldBoardTimeout = 20 /* mins */ * 60 /* secs */ * 1000 /* ms */ ;
 const timeBetweenOldBoardCleanupPasses = 1 /* mins */ * 60 /* secs */ * 1000 /* ms */ ;
