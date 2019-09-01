@@ -8,7 +8,6 @@ const timeBetweenOldBoardCleanupPasses = 1 /* mins */ * 60 /* secs */ * 1000 /* 
 const timeBetweenHeartbeatMsgs = 1 /* mins */ * 60 /* secs */ * 1000 /* ms */ ;
 
 // Log config messages to the terminal.
-console.log("CONFIG: HTTP server on port:\t" + httpPort);
 console.log("CONFIG: WS server on port:\t" + wsPort);
 console.log("CONFIG: Time formatted in MM/DD/YYYY HH:MM::SS:MS, local server time zone");
 console.log("CONFIG: Server Timezone:\tUTC" + (-(new Date).getTimezoneOffset() / 60));
