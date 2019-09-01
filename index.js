@@ -152,7 +152,7 @@ function sendHeartbeatMsgs() {
 // ws (websocket connection): WebSocket to use for communication with the current client.
 // msg (JSON string): Non-parsed JSON string with the message body.
 function handleWsMessage(ws, msg) {
-  // Try to parse the JSON, catching possible exceptions.
+  // Attempt to parse the JSON, catching possible exceptions.
   var parsedMsg;
   try {
     parsedMsg = JSON.parse(msg);
@@ -166,13 +166,10 @@ function handleWsMessage(ws, msg) {
   }
 
   // Is the provided session ID in the list of issued IDs?
-  if (parsedMsg.msgType !== "signup") {
+  if (parsedMsg.msgType !== "signup") { // signup messages won't contain sIDs.
     var validSID = false;
     for (var i = 0; i < issuedSIDs.length; i++) {
-      logMsg(false, "issuedID:\t" + issuedSIDs[i])
-      logMsg(false, "parsedMsg.sID:\t" + parsedMsg.sessionID)
       if (parsedMsg.sessionID === issuedSIDs[i]) {
-        logMsg(false, "Same.")
         validSID = true;
         break;
       }
@@ -187,6 +184,7 @@ function handleWsMessage(ws, msg) {
     }
   }
 
+  // Handle the request:
   switch (parsedMsg.msgType) {
     case "signup":
       logMsg(false, "Signup message received. Name: " + parsedMsg.name);
@@ -206,7 +204,6 @@ function handleWsMessage(ws, msg) {
       // Add the player to the board.
       var newSessionID = makeSessionID(8);
       boardsList[freeBoard].addPlayer(newSessionID, ws, parsedMsg.name);
-
       logMsg(false, "New player added to board " + freeBoard + " sID " +
         newSessionID);
 
@@ -322,6 +319,7 @@ var cleanupHandle = setInterval(cleanUpOldBoards, timeBetweenOldBoardCleanupPass
 //clearInterval(cleanupHandle)
 
 // Setup periodic heartbeat message to all players.
+// https://stackoverflow.com/a/1224485/3339274
 var heartbeatHandle = setInterval(sendHeartbeatMsgs, timeBetweenHeartbeatMsgs);
 //clearInterval(heartbeatHandle)
 
