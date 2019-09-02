@@ -7,7 +7,7 @@ class Board {
     this.playersInGame = [];
     this.playersInGame.remove = function (index) {
       // https://stackoverflow.com/a/53069926/3339274
-      numToRemove = 1;
+      var numToRemove = 1;
       this.splice(index, numToRemove);
     }
     this.gameBeganAt = new Date(0);
@@ -38,7 +38,7 @@ class Board {
   // sessionID (string): Client-provided session ID.
   removePlayer(sessionID) {
     for (var i = 0; i < this.playersInGame.length; i++) {
-      if (this.playersInGame[i].sessionID == sessionID) {
+      if (this.playersInGame[i].sID == sessionID) {
         this.playersInGame.remove(i);
         return;
       }

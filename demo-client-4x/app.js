@@ -77,22 +77,18 @@ loadSignupMsgsBtn.onclick = function (event) {
 
   box1.value = JSON.stringify({
     msgType: "signup",
-    sessionID: "bazb7aMs",
     name: "Billy Bob"
   });
   box2.value = JSON.stringify({
     msgType: "signup",
-    sessionID: "bazb7afs",
     name: "Jane Bob"
   });
   box3.value = JSON.stringify({
     msgType: "signup",
-    sessionID: "bazb3aMs",
     name: "Joe Smith"
   });
   box4.value = JSON.stringify({
     msgType: "signup",
-    sessionID: "bwrb3aMs",
     name: "Jack Sprat"
   });
 };

@@ -18,7 +18,7 @@ console.log("BEGIN SERVER LOG OUTPUT");
 var boardsList = [];
 boardsList.remove = function (index) {
   // https://stackoverflow.com/a/53069926/3339274
-  numToRemove = 1;
+  var numToRemove = 1;
   this.splice(index, numToRemove);
 }
 
@@ -232,7 +232,7 @@ function handleWsMessage(ws, msg) {
         }
         // Else, tell all players that the game how many players still need to join.
       } else {
-        logMsg(false, "Nope, just sending waiting message.")
+        logMsg(false, "Board " + freeBoard + " still isn't full, just sending waiting message.")
         var playersList = boardsList[freeBoard].getPlayers();
         var numLeft = 4 - playersList.length;
         for (var i = 0; i < playersList.length; i++) {
@@ -253,7 +253,20 @@ function handleWsMessage(ws, msg) {
         logMsg(true, "Error!: Board not found for sessionID: " +
           parsedMsg.sessionID);
       } else {
+        // Remove the player from the game.
+        logMsg(false, "OLD length: " + board.getPlayers().length);
         board.removePlayer(sessionID);
+        logMsg(false, "NEW length: " + board.getPlayers().length);
+
+        // Tell the other clients of the change.
+        var playersList = board.getPlayers();
+        for (var i = 0; i < playersList.length; i++) {
+          logMsg(false, "Player with sID: " + sessionID + " removed from their board. Notifying client with sID: " + playersList[i].sID);
+          playersList[i].connection.send(JSON.stringify({
+            msgType: "waitingForPlayers",
+            numLeft: 4 - playersList.length
+          }));
+        }
       }
       break;
     case "playerMove":
