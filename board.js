@@ -415,7 +415,7 @@ class Board {
 
         // If no viable box exists for the additional piece, the player has lost.
         if (viableCol == -1 && viableRow == -1) {
-          this.playersInGame[player].hasLost = true;
+          this.playersInGame[player - 1].hasLost = true;
         } else this.addNewTile(viableRow, viableCol, player);
         break;
 
@@ -529,7 +529,7 @@ class Board {
 
         // If no viable box exists for the additional piece, the player has lost.
         if (viableCol == -1 && viableRow == -1) {
-          this.playersInGame[player].hasLost = true;
+          this.playersInGame[player - 1].hasLost = true;
         } else this.addNewTile(viableRow, viableCol, player);
         break;
 
@@ -643,7 +643,7 @@ class Board {
 
         // If no viable box exists for the additional piece, the player has lost.
         if (viableCol == -1 && viableRow == -1) {
-          this.playersInGame[player].hasLost = true;
+          this.playersInGame[player - 1].hasLost = true;
         } else this.addNewTile(viableRow, viableCol, player);
         break;
 
@@ -757,7 +757,7 @@ class Board {
 
         // If no viable box exists for the additional piece, the player has lost.
         if (viableCol == -1 && viableRow == -1) {
-          this.playersInGame[player].hasLost = true;
+          this.playersInGame[player - 1].hasLost = true;
         } else this.addNewTile(viableRow, viableCol, player);
         break;
 
